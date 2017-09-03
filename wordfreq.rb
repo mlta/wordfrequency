@@ -18,13 +18,13 @@ class Wordfreq
            @words[word] = 1
          end
        end
-       top_words(5)
+
      end
 
 
      def frequency(word)
        if @words.has_key?(word)
-         return frequencies[word]
+         frequencies[word]
        else
          0
        end
@@ -35,11 +35,11 @@ class Wordfreq
      end
 
      def top_words(number)
-       @words.sort_by { |word, count| count }.reverse.take(5)
+       @words.sort_by { |word, count| count }.reverse.take(number)
      end
 
      def print_report
-       top10 = @words.sort_by { |word, count| count }.reverse.take(10).to_h
+       top10 = top_words(10).to_h
        top10.each { |word_and_count|
          stars = "*" * word_and_count[1]
          puts "#{word_and_count[0]} | #{word_and_count[1]} #{stars}"
